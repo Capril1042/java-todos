@@ -22,6 +22,11 @@ public class Users
         return userid;
     }
 
+    public void setUserid(long userid)
+    {
+        this.userid = userid;
+    }
+
     public String getUsername()
     {
         return username;

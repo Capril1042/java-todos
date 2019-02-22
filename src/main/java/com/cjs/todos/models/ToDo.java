@@ -3,7 +3,8 @@ package com.cjs.todos.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="todo")
@@ -13,12 +14,12 @@ public class ToDo
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long todoid;
 
-    @Column(nullable = false)
+    @Column( name="description", nullable = false)
     private String description;
 
-    private  Date datestarted;
+    private String datestarted;
 
-    private boolean completed;
+    private int completed;
 
     @ManyToOne
     @JoinColumn(name="userid", nullable = false)
@@ -34,6 +35,11 @@ public class ToDo
         return todoid;
     }
 
+    public void setTodoid(long todoid)
+    {
+        this.todoid = todoid;
+    }
+
     public String getDescription()
     {
         return description;
@@ -44,22 +50,22 @@ public class ToDo
         this.description = description;
     }
 
-    public Date getDatestarted()
+    public String getDatestarted()
     {
         return datestarted;
     }
 
-    public void setDatestarted(Date datestarted)
+    public void setDatestarted(String datestarted)
     {
         this.datestarted = datestarted;
     }
 
-    public boolean isCompleted()
+    public int isCompleted()
     {
         return completed;
     }
 
-    public void setCompleted(boolean completed)
+    public void setCompleted(int completed)
     {
         this.completed = completed;
     }
